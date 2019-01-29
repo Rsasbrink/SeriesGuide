@@ -47,6 +47,8 @@ buildscript {
         mavenCentral()
         jcenter()
         maven { url 'https://maven.fabric.io/public' }
+        maven { url "https://plugins.gradle.org/m2/"}
+
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:3.2.1' // libraries, SeriesGuide
@@ -55,12 +57,13 @@ buildscript {
         classpath 'com.google.cloud.tools:endpoints-framework-gradle-plugin:2.0.0' // SeriesGuide
         classpath 'io.fabric.tools:gradle:1.27.0' // SeriesGuide
         //noinspection GradleDependency
+        classpath "org.sonarsource.scanner.gradle:sonarqube-gradle-plugin:2.7"
         classpath 'io.codearte.gradle.nexus:gradle-nexus-staging-plugin:0.10.0' // api
     }
 }
 
 apply plugin: 'com.github.ben-manes.versions'
-
+apply plugin: "org.sonarqube"
 // reject preview releases for dependencyUpdates task
 dependencyUpdates.resolutionStrategy = {
     componentSelection { rules ->

@@ -65,7 +65,7 @@ android {
         exclude '**/*.kotlin_module'
     }
 
-    flavorDimensions "flavor"
+    flavorDimensions "pureDebug"
 
     productFlavors {
         pure {

@@ -130,11 +130,6 @@ String title = "Friends";
 
     @Test
     public void addSeries() {
-        File root = InstrumentationRegistry.getTargetContext().getFilesDir().getParentFile();
-        String[] sharedPreferencesFileNames = new File(root, "shared_prefs").list();
-        for (String fileName : sharedPreferencesFileNames) {
-            InstrumentationRegistry.getTargetContext().getSharedPreferences(fileName.replace(".xml", ""), Context.MODE_PRIVATE).edit().clear().commit();
-        }
         activityTestRule.launchActivity(null);
 
         // Added a sleep statement to match the app's execution delay.

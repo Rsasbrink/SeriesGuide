@@ -11,6 +11,7 @@ import com.battlelancer.seriesguide.R;
 import org.hamcrest.Description;
 import org.hamcrest.Matcher;
 import org.hamcrest.TypeSafeMatcher;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -40,7 +41,14 @@ public class SkipEpisode {
 
     @Rule
     public ActivityTestRule<ShowsActivity> activityTestRule = new ActivityTestRule<>(ShowsActivity.class, false, false);
-
+    @Before
+    public  void PrepareDatabase() {
+        File root = InstrumentationRegistry.getTargetContext().getFilesDir().getParentFile();
+        String[] sharedPreferencesFileNames = new File(root, "shared_prefs").list();
+        for (String fileName : sharedPreferencesFileNames) {
+            InstrumentationRegistry.getTargetContext().getSharedPreferences(fileName.replace(".xml", ""), Context.MODE_PRIVATE).edit().clear().commit();
+        }
+    }
 
     @Test
     public void skipEpisode() {

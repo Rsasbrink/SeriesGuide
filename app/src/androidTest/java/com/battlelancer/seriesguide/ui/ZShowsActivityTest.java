@@ -40,7 +40,7 @@ import org.junit.runner.RunWith;
  * - Animator duration scale
  */
 @RunWith(AndroidJUnit4.class)
-public class ShowsActivityTest {
+public class ZShowsActivityTest {
 
     @Rule
     public ActivityTestRule<ShowsActivity> mActivityTestRule = new ActivityTestRule<>(

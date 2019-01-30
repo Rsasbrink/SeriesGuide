@@ -4,9 +4,6 @@
 *.keystore
 
 # Local configuration files (sdk path, etc)
-keystore.properties
-local.properties
-secret.properties
 
 ### Firebase
 google-services.json

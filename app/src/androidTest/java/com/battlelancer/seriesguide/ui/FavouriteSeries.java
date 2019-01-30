@@ -1,6 +1,7 @@
 package com.battlelancer.seriesguide.ui;
 
 
+import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
@@ -14,6 +15,9 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
+import java.io.File;
+
+import androidx.test.InstrumentationRegistry;
 import androidx.test.espresso.ViewInteraction;
 import androidx.test.filters.LargeTest;
 import androidx.test.rule.ActivityTestRule;
@@ -36,10 +40,16 @@ import static org.hamcrest.Matchers.is;
 public class FavouriteSeries {
 
     @Rule
-    public ActivityTestRule<ShowsActivity> mActivityTestRule = new ActivityTestRule<>(ShowsActivity.class);
+    public ActivityTestRule<ShowsActivity> activityTestRule = new ActivityTestRule<>(ShowsActivity.class, false, false);
 
     @Test
     public void favouriteSeries() {
+        File root = InstrumentationRegistry.getTargetContext().getFilesDir().getParentFile();
+        String[] sharedPreferencesFileNames = new File(root, "shared_prefs").list();
+        for (String fileName : sharedPreferencesFileNames) {
+            InstrumentationRegistry.getTargetContext().getSharedPreferences(fileName.replace(".xml", ""), Context.MODE_PRIVATE).edit().clear().commit();
+        }
+        activityTestRule.launchActivity(null);
         // Added a sleep statement to match the app's execution delay.
         // The recommended way to handle such scenarios is to use Espresso idling resources:
         // https://google.github.io/android-testing-support-library/docs/espresso/idling-resource/index.html

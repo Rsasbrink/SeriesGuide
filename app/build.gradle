@@ -117,6 +117,7 @@ android {
             if (!rootProject.file('app/fabric.properties').exists()) {
                 ext.enableCrashlytics = false
             }
+            testCoverageEnabled = true
 
             multiDexEnabled true
             // disable shrinking to use incremental dex in builds
